@@ -1,9 +1,10 @@
 <template>
+  <ThemeToggle />
   <router-view></router-view>
 </template>
 
 <script setup>
-// No script needed for this simple layout
+import ThemeToggle from './components/ThemeToggle.vue'
 </script>
 
 <style>
