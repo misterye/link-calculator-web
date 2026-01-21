@@ -17,10 +17,6 @@
         <p class="mt-2">{{ t('home.introText2') }}</p>
       </div>
     </div>
-
-    <div class="footer-link">
-      <a href="https://tierhive.com/r/E09E0C8C39A6" target="_blank" rel="noopener noreferrer">Checkout TierHive for your Hourly VPS</a>
-    </div>
   </div>
 </template>
 
@@ -55,22 +51,5 @@ const navigateToPowerConverter = () => {
 
 .mt-2 {
   margin-top: 10px;
-}
-
-.footer-link {
-  margin-top: auto;
-  padding: 20px 0;
-  text-align: center;
-  font-size: 14px;
-}
-
-.footer-link a {
-  color: var(--primary-color);
-  text-decoration: underline;
-  transition: opacity 0.3s;
-}
-
-.footer-link a:hover {
-  opacity: 0.8;
 }
 </style>
