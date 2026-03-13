@@ -1,0 +1,288 @@
+@import 'tailwindcss';
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   LIQUID GLASS DESIGN SYSTEM
+   Modern Minimal · Glassmorphism · Dark-first
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ── Custom fonts ───────────────────────────────────── */
+@theme {
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'Space Mono', 'SF Mono', monospace;
+}
+
+/* ── Light theme (default) ──────────────────────────── */
+:root {
+  --bg-base: #f0f2f5;
+  --bg-elevated: rgba(255, 255, 255, 0.65);
+  --bg-glass: rgba(255, 255, 255, 0.45);
+  --bg-glass-hover: rgba(255, 255, 255, 0.6);
+  --bg-input: rgba(255, 255, 255, 0.55);
+  --bg-input-focus: rgba(255, 255, 255, 0.8);
+  --border-glass: rgba(255, 255, 255, 0.6);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --text-primary: #1a1a2e;
+  --text-secondary: #5a5a7a;
+  --text-muted: #8e8ea0;
+  --accent: #4f7df9;
+  --accent-soft: rgba(79, 125, 249, 0.12);
+  --accent-glow: rgba(79, 125, 249, 0.35);
+  --result-num: #2d5bdb;
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255,255,255,0.7);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 24px rgba(79, 125, 249, 0.2);
+  --inset-highlight: inset 0 1px 1px rgba(255,255,255,0.8);
+  --blur-amount: 20px;
+  --gradient-mesh: radial-gradient(ellipse at 20% 0%, rgba(79,125,249,0.08) 0%, transparent 50%),
+                   radial-gradient(ellipse at 80% 100%, rgba(160,100,245,0.06) 0%, transparent 50%);
+  --grid-color: rgba(79, 125, 249, 0.05);
+  --grid-dot: rgba(79, 125, 249, 0.08);
+}
+
+/* ── Dark theme ─────────────────────────────────────── */
+[data-theme='dark'] {
+  --bg-base: #0e0e18;
+  --bg-elevated: rgba(30, 30, 50, 0.65);
+  --bg-glass: rgba(25, 25, 45, 0.55);
+  --bg-glass-hover: rgba(35, 35, 60, 0.65);
+  --bg-input: rgba(30, 30, 55, 0.6);
+  --bg-input-focus: rgba(40, 40, 70, 0.8);
+  --border-glass: rgba(100, 100, 180, 0.15);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --text-primary: #e8e8f0;
+  --text-secondary: #a0a0be;
+  --text-muted: #6a6a88;
+  --accent: #6ee7b7;
+  --accent-soft: rgba(110, 231, 183, 0.1);
+  --accent-glow: rgba(110, 231, 183, 0.3);
+  --result-num: #6ee7b7;
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.04);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 24px rgba(110, 231, 183, 0.15);
+  --inset-highlight: inset 0 1px 1px rgba(255,255,255,0.03);
+  --blur-amount: 24px;
+  --gradient-mesh: radial-gradient(ellipse at 20% 0%, rgba(110,231,183,0.06) 0%, transparent 50%),
+                   radial-gradient(ellipse at 80% 100%, rgba(147,130,255,0.05) 0%, transparent 50%);
+  --grid-color: rgba(110, 231, 183, 0.04);
+  --grid-dot: rgba(110, 231, 183, 0.07);
+}
+
+/* ── Global reset & base ────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background 0.4s ease, color 0.3s ease;
+}
+
+/* Gradient mesh layer */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--gradient-mesh);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Tech grid overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* ── Utility: glass card ────────────────────────────── */
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--blur-amount));
+  -webkit-backdrop-filter: blur(var(--blur-amount));
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  box-shadow: var(--shadow-glass);
+  padding: 24px;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.glass-card:hover {
+  background: var(--bg-glass-hover);
+}
+
+/* ── Utility: glass input ───────────────────────────── */
+.glass-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1.5px solid var(--border-glass);
+  background: var(--bg-input);
+  backdrop-filter: blur(12px);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--inset-highlight);
+}
+
+.glass-input:focus {
+  border-color: var(--accent);
+  background: var(--bg-input-focus);
+  box-shadow: var(--inset-highlight), 0 0 0 3px var(--accent-soft), var(--shadow-glow);
+}
+
+.glass-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ── Utility: glass select ──────────────────────────── */
+.glass-select {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1.5px solid var(--border-glass);
+  background: var(--bg-input);
+  backdrop-filter: blur(12px);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238e8ea0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--inset-highlight);
+}
+
+.glass-select:focus {
+  border-color: var(--accent);
+  background-color: var(--bg-input-focus);
+  box-shadow: var(--inset-highlight), 0 0 0 3px var(--accent-soft), var(--shadow-glow);
+}
+
+.glass-select option {
+  background: var(--bg-base);
+  color: var(--text-primary);
+}
+
+/* ── Segmented control ──────────────────────────────── */
+.seg-control {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 16px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-glass);
+  position: relative;
+}
+
+.seg-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.25s ease;
+  white-space: nowrap;
+}
+
+.seg-btn.active {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.seg-indicator {
+  position: absolute;
+  top: 4px;
+  height: calc(100% - 8px);
+  border-radius: 12px;
+  background: var(--bg-glass-hover);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-card);
+  z-index: 1;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Live number readout ────────────────────────────── */
+.live-number {
+  font-family: var(--font-mono);
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  font-weight: 700;
+  color: var(--result-num);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.live-unit {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+
+/* ── Scrollbar styling ──────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-glass);
+  border-radius: 3px;
+}
+
+/* ── Number input arrow removal ─────────────────────── */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
