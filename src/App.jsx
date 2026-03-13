@@ -7,6 +7,10 @@ import LanguageToggle from './components/LanguageToggle'
 import Home from './pages/Home'
 import LinkEfficiency from './pages/LinkEfficiency'
 import PowerConverter from './pages/PowerConverter'
+import EbN0Converter from './pages/EbN0Converter'
+import NoiseFigure from './pages/NoiseFigure'
+import AntennaCalc from './pages/AntennaCalc'
+import EirpGT from './pages/EirpGT'
 import { useI18n } from './contexts/I18nContext'
 
 function AppLayout() {
@@ -47,7 +51,7 @@ function AppLayout() {
       </header>
 
       {/* ─── Main content ─── */}
-      <main className="px-5 pt-2 pb-24 sm:px-8">
+      <main className="px-5 pt-2 pb-10 sm:px-8">
         <div className="mx-auto w-full max-w-xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -61,6 +65,10 @@ function AppLayout() {
                 <Route path="/" element={<Home />} />
                 <Route path="/link-efficiency" element={<LinkEfficiency />} />
                 <Route path="/power-converter" element={<PowerConverter />} />
+                <Route path="/ebn0" element={<EbN0Converter />} />
+                <Route path="/noise-figure" element={<NoiseFigure />} />
+                <Route path="/antenna" element={<AntennaCalc />} />
+                <Route path="/eirp-gt" element={<EirpGT />} />
               </Routes>
             </motion.div>
           </AnimatePresence>

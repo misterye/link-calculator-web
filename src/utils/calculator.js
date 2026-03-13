@@ -220,6 +220,77 @@ function convertPower(value, fromUnit) {
   return { watts, dBm, dBW }
 }
 
+// ===================== Eb/N0 ↔ C/N conversion =====================
+
+const SPEED_OF_LIGHT = 299792458 // m/s
+const T0 = 290 // reference temperature (K)
+
+/**
+ * C/N (dB) = Eb/N0 (dB) + 10·log10(Rb / Bn)
+ */
+function ebN0ToCN(ebN0_dB, rb, bn) {
+  return ebN0_dB + 10 * Math.log10(rb / bn)
+}
+
+/**
+ * Eb/N0 (dB) = C/N (dB) − 10·log10(Rb / Bn)
+ */
+function cnToEbN0(cn_dB, rb, bn) {
+  return cn_dB - 10 * Math.log10(rb / bn)
+}
+
+// ===================== NF ↔ Te conversion =====================
+
+/**
+ * Te = T0 × (10^(NF/10) − 1)
+ */
+function nfToTe(nf_dB) {
+  return T0 * (Math.pow(10, nf_dB / 10) - 1)
+}
+
+/**
+ * NF = 10·log10(1 + Te/T0)
+ */
+function teToNf(te_K) {
+  return 10 * Math.log10(1 + te_K / T0)
+}
+
+// ===================== Antenna Gain & Beamwidth =====================
+
+/**
+ * G (dBi) = 10·log10(η × (π·D/λ)²)
+ * λ = c / f
+ */
+function antennaGain(diameter, frequency, efficiency = 0.6) {
+  const lambda = SPEED_OF_LIGHT / frequency
+  const ratio = (Math.PI * diameter) / lambda
+  return 10 * Math.log10(efficiency * ratio * ratio)
+}
+
+/**
+ * θ_3dB ≈ 70·λ / D  (degrees)
+ */
+function beamwidth3dB(diameter, frequency) {
+  const lambda = SPEED_OF_LIGHT / frequency
+  return (70 * lambda) / diameter
+}
+
+// ===================== EIRP & G/T =====================
+
+/**
+ * EIRP (dBW) = Ptx (dBW) + Gtx (dBi) − Ltx (dB)
+ */
+function calcEIRP(ptx_dBW, gtx_dBi, ltx_dB) {
+  return ptx_dBW + gtx_dBi - ltx_dB
+}
+
+/**
+ * G/T (dB/K) = Grx (dBi) − 10·log10(Tsys)
+ */
+function calcGT(grx_dBi, tsys_K) {
+  return tsys_K > 0 ? grx_dBi - 10 * Math.log10(tsys_K) : -Infinity
+}
+
 // ===================== Exports =====================
 
 const calculator = {
@@ -233,6 +304,8 @@ const calculator = {
   BANDWIDTH_UNITS,
   DOWNLINK_MODCODS,
   UPLINK_MODCODS,
+  SPEED_OF_LIGHT,
+  T0,
   // Helpers
   getModulation,
   getFecRate,
@@ -250,6 +323,18 @@ const calculator = {
   dBWToWatts,
   dBWTodBm,
   convertPower,
+  // Eb/N0 ↔ C/N
+  ebN0ToCN,
+  cnToEbN0,
+  // NF ↔ Te
+  nfToTe,
+  teToNf,
+  // Antenna
+  antennaGain,
+  beamwidth3dB,
+  // EIRP & G/T
+  calcEIRP,
+  calcGT,
 }
 
 export default calculator
