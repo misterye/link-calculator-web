@@ -2,13 +2,60 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>链路参数计算器 | Link Parameter Calculator</title>
-    <meta name="description" content="Professional satellite link parameter calculator for DVB-S2/S2X — compute symbol rate, bandwidth, spectral efficiency, and power conversions." />
+
+    <title>链路计算器 | Link Calculator — 卫星链路预算与射频工程工具</title>
+    <meta name="description" content="免费在线卫星链路计算器，专为 DVB-S2/S2X 系统设计。可计算符号率、带宽、频谱效率、Eb/N0、天线增益、EIRP、G/T，以及在 W/dBm/dBW 和噪声系数/噪声温度之间进行换算。 | Free online satellite link calculator for DVB-S2/S2X systems. Calculate symbol rate, bandwidth, spectral efficiency, Eb/N0, antenna gain, EIRP, G/T, and convert between W/dBm/dBW and NF/noise temperature." />
+    <link rel="canonical" href="https://link.shshensi.cn" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://link.shshensi.cn" />
+    <meta property="og:title" content="链路计算器 | Link Calculator — 卫星链路预算与射频工程工具" />
+    <meta property="og:description" content="免费在线卫星链路计算器，专为 DVB-S2/S2X 系统设计。可计算符号率、带宽、频谱效率、Eb/N0、天线增益、EIRP、G/T，以及在 W/dBm/dBW 和噪声系数/噪声温度之间进行换算。 | Free online satellite link calculator for DVB-S2/S2X systems. Calculate symbol rate, bandwidth, spectral efficiency, Eb/N0, antenna gain, EIRP, G/T, and convert between W/dBm/dBW and NF/noise temperature." />
+    <meta property="og:image" content="https://auztlnzantkockpjsbgz.supabase.co/storage/v1/object/public/Linkcal/og-image.png" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="https://auztlnzantkockpjsbgz.supabase.co/storage/v1/object/public/Linkcal/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://auztlnzantkockpjsbgz.supabase.co/storage/v1/object/public/Linkcal/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://auztlnzantkockpjsbgz.supabase.co/storage/v1/object/public/Linkcal/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://auztlnzantkockpjsbgz.supabase.co/storage/v1/object/public/Linkcal/apple-touch-icon.png" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "链路计算器 | Link Calculator",
+      "url": "https://link.shshensi.cn",
+      "description": "免费在线卫星链路计算器，专为 DVB-S2/S2X 系统设计。可计算符号率、带宽、频谱效率、Eb/N0、天线增益、EIRP、G/T，以及在 W/dBm/dBW 和噪声系数/噪声温度之间进行换算。 | Free online satellite link calculator for DVB-S2/S2X systems. Calculate symbol rate, bandwidth, spectral efficiency, Eb/N0, antenna gain, EIRP, G/T, and convert between W/dBm/dBW and NF/noise temperature.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "brand": {
+        "@type": "Organization",
+        "name": "链路计算器",
+        "logo": "https://auztlnzantkockpjsbgz.supabase.co/storage/v1/object/public/Linkcal/logo.png"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "链路计算器",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://auztlnzantkockpjsbgz.supabase.co/storage/v1/object/public/Linkcal/logo.png"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
