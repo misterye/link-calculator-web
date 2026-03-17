@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Home as HomeIcon } from 'lucide-react'
 import ThemeToggle from './components/ThemeToggle'
 import LanguageToggle from './components/LanguageToggle'
 import Home from './pages/Home'
@@ -19,33 +19,53 @@ function AppLayout() {
   const location = useLocation()
   const { t } = useI18n()
   const isHome = location.pathname === '/'
+  const isFormulaPage = location.pathname.endsWith('/formula')
 
   return (
     <div className="w-full max-w-2xl mx-auto">
       {/* ─── Header bar ─── */}
-      <header className="flex items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
+      <header className="flex items-center justify-between px-5 pt-8 pb-4 sm:px-8 sm:pt-10 sm:pb-5">
         <div className="flex items-center gap-3">
-          {!isHome && (
+          {!isHome && !isFormulaPage && (
             <motion.button
-              className="flex items-center gap-1.5 text-sm cursor-pointer"
+              className="glass-card !p-2.5 !rounded-full cursor-pointer"
               style={{
-                color: 'var(--text-secondary)',
-                background: 'none',
-                border: 'none',
-                fontFamily: 'var(--font-sans)',
+                border: '1px solid var(--border-glass)',
+                minWidth: '38px',
+                minHeight: '38px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
-              onClick={() => navigate('/')}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              whileHover={{ x: -3, color: 'var(--accent)' }}
-              transition={{ duration: 0.2 }}
+              onClick={() => navigate(-1)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label={t('common.back')}
             >
-              <ArrowLeft size={16} />
-              {t('common.back')}
+              <ArrowLeft size={18} style={{ color: 'var(--text-secondary)' }} />
             </motion.button>
           )}
         </div>
         <div className="flex items-center gap-2">
+          {!isHome && (
+            <motion.button
+              className="glass-card !p-2.5 !rounded-full cursor-pointer"
+              style={{
+                border: '1px solid var(--border-glass)',
+                minWidth: '38px',
+                minHeight: '38px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              onClick={() => navigate('/')}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label="Go to home"
+            >
+              <HomeIcon size={18} style={{ color: 'var(--text-secondary)' }} />
+            </motion.button>
+          )}
           <LanguageToggle />
           <ThemeToggle />
         </div>
