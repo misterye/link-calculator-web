@@ -34,7 +34,7 @@ export default function FormulaExplanation() {
     }
 
     // Determine the path to the markdown file depending on current locale
-    const mdPath = `/src/docs/${locale}/${fileName}.md`;
+    const mdPath = `/docs/${locale}/${fileName}.md`;
 
     fetch(mdPath)
       .then(response => {
