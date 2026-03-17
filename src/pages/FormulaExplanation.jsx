@@ -9,6 +9,7 @@ import 'katex/dist/katex.min.css'
 import GlassCard from '../components/GlassCard'
 import { useI18n } from '../contexts/I18nContext'
 import { ArrowLeft, BookOpenText } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function FormulaExplanation() {
   const { type } = useParams()
@@ -62,13 +63,23 @@ export default function FormulaExplanation() {
   return (
     <div className="flex flex-col gap-6 pt-4 pb-12 max-w-4xl mx-auto w-full px-4 sm:px-0">
       <div className="flex items-center gap-4 mb-2">
-        <button 
+        <motion.button 
           onClick={() => navigate(-1)} 
-          className="p-2.5 rounded-2xl bg-[var(--bg-glass)] border border-[var(--border-glass)] shadow-[var(--shadow-card)] hover:bg-[var(--bg-glass-hover)] transition-all duration-300 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:scale-105 active:scale-95 flex items-center justify-center shrink-0"
+          className="glass-card !p-2.5 !rounded-full cursor-pointer shrink-0"
+          style={{
+            border: '1px solid var(--border-glass)',
+            minWidth: '38px',
+            minHeight: '38px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           aria-label="Go back"
         >
-          <ArrowLeft size={20} className="stroke-[2.5px]" />
-        </button>
+          <ArrowLeft size={18} style={{ color: 'var(--text-secondary)' }} />
+        </motion.button>
         <div className="p-2.5 rounded-2xl bg-gradient-to-br from-[var(--accent)] to-[var(--result-num)] text-white shadow-lg shadow-[var(--accent-glow)] hidden sm:flex shrink-0">
           <BookOpenText size={24} className="stroke-[2.5px]" />
         </div>

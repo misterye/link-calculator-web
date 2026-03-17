@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -13,6 +14,7 @@ import AntennaCalc from './pages/AntennaCalc'
 import EirpGT from './pages/EirpGT'
 import FormulaExplanation from './pages/FormulaExplanation'
 import { useI18n } from './contexts/I18nContext'
+import { App as CapacitorApp } from '@capacitor/app'
 
 function AppLayout() {
   const navigate = useNavigate()
@@ -20,6 +22,23 @@ function AppLayout() {
   const { t } = useI18n()
   const isHome = location.pathname === '/'
   const isFormulaPage = location.pathname.endsWith('/formula')
+
+  useEffect(() => {
+    const handleBackButton = async () => {
+      // Use the up-to-date location.pathname
+      if (location.pathname === '/' || location.pathname === '') {
+        CapacitorApp.exitApp();
+      } else {
+        navigate(-1);
+      }
+    };
+
+    CapacitorApp.addListener('backButton', handleBackButton);
+
+    return () => {
+      CapacitorApp.removeAllListeners();
+    };
+  }, [location, navigate]);
 
   return (
     <div className="w-full max-w-2xl mx-auto">
