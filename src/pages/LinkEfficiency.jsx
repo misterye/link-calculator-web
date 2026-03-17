@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import GlassCard from '../components/GlassCard'
 import SegmentedControl from '../components/SegmentedControl'
 import LiveNumber from '../components/LiveNumber'
@@ -9,6 +10,7 @@ const ROLL_OFF_OPTIONS = [...calculator.ROLL_OFF_PRESETS.map(String), 'custom']
 
 export default function LinkEfficiency() {
   const { t } = useI18n()
+  const navigate = useNavigate()
 
   // ─── State ───
   const [linkType, setLinkType] = useState('downlink')
@@ -246,6 +248,19 @@ export default function LinkEfficiency() {
           </div>
         </GlassCard>
       )}
+
+      {/* Formula Explanation Card */}
+      <GlassCard delay={0.3}>
+        <div 
+          className="flex flex-row items-center justify-between cursor-pointer"
+          onClick={() => navigate('/link-efficiency/formula')}
+        >
+          <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+            {t('common.formulaExplanation')}
+          </span>
+          <span style={{ color: 'var(--text-muted)' }}>→</span>
+        </div>
+      </GlassCard>
     </div>
   )
 }

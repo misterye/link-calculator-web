@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import GlassCard from '../components/GlassCard'
 import SegmentedControl from '../components/SegmentedControl'
 import LiveNumber from '../components/LiveNumber'
@@ -13,6 +14,7 @@ const RATE_UNITS = [
 
 export default function EbN0Converter() {
   const { t } = useI18n()
+  const navigate = useNavigate()
 
   const [mode, setMode] = useState('ebToC')
   const [inputVal, setInputVal] = useState('')
@@ -115,6 +117,19 @@ export default function EbN0Converter() {
           </div>
         </GlassCard>
       )}
+
+      {/* Formula Explanation Card */}
+      <GlassCard delay={0.2}>
+        <div 
+          className="flex flex-row items-center justify-between cursor-pointer"
+          onClick={() => navigate('/ebn0/formula')}
+        >
+          <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+            {t('common.formulaExplanation')}
+          </span>
+          <span style={{ color: 'var(--text-muted)' }}>→</span>
+        </div>
+      </GlassCard>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import GlassCard from '../components/GlassCard'
 import SegmentedControl from '../components/SegmentedControl'
 import LiveNumber from '../components/LiveNumber'
@@ -9,6 +10,7 @@ const POWER_UNITS = ['W', 'dBm', 'dBW']
 
 export default function PowerConverter() {
   const { t } = useI18n()
+  const navigate = useNavigate()
 
   const [inputUnit, setInputUnit] = useState('W')
   const [inputValue, setInputValue] = useState('')
@@ -103,6 +105,19 @@ export default function PowerConverter() {
           </div>
         </GlassCard>
       )}
+
+      {/* Formula Explanation Card */}
+      <GlassCard delay={0.2}>
+        <div 
+          className="flex flex-row items-center justify-between cursor-pointer"
+          onClick={() => navigate('/power-converter/formula')}
+        >
+          <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+            {t('common.formulaExplanation')}
+          </span>
+          <span style={{ color: 'var(--text-muted)' }}>→</span>
+        </div>
+      </GlassCard>
     </div>
   )
 }

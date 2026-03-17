@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import GlassCard from '../components/GlassCard'
 import SegmentedControl from '../components/SegmentedControl'
 import LiveNumber from '../components/LiveNumber'
@@ -7,6 +8,7 @@ import { useI18n } from '../contexts/I18nContext'
 
 export default function NoiseFigure() {
   const { t } = useI18n()
+  const navigate = useNavigate()
 
   const [mode, setMode] = useState('nfToTe')
   const [inputVal, setInputVal] = useState('')
@@ -77,6 +79,19 @@ export default function NoiseFigure() {
           </div>
         </GlassCard>
       )}
+
+      {/* Formula Explanation Card */}
+      <GlassCard delay={0.2}>
+        <div 
+          className="flex flex-row items-center justify-between cursor-pointer"
+          onClick={() => navigate('/noise-figure/formula')}
+        >
+          <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+            {t('common.formulaExplanation')}
+          </span>
+          <span style={{ color: 'var(--text-muted)' }}>→</span>
+        </div>
+      </GlassCard>
     </div>
   )
 }

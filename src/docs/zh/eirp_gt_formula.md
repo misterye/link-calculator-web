@@ -53,8 +53,8 @@
 \]
 
 **原理解释**：
-- 接收信号功率 ∝ Grx（增益越高，收集的信号能量越多）。
-- 噪声功率 = k × Tsys × B（k 为玻尔兹曼常数，B 为带宽）。Tsys 越低，噪声越小。
+- 接收信号功率 $\propto G_{rx}$（增益越高，收集的信号能量越多）。
+- 噪声功率 $= k \times T_{sys} \times B$（$k$ 为玻尔兹曼常数，$B$ 为带宽）。$T_{sys}$ 越低，噪声越小。
 - 因此 G/T 直接决定 **载噪比 C/N**（Carrier-to-Noise Ratio）：
   \[
   \left(\frac{C}{N}\right) \propto \text{EIRP} \times \frac{G}{T} \times \frac{1}{L_{\text{path}}}
@@ -95,7 +95,7 @@ $$T_{sys} = T_a + T_e$$
 ### 1. 典型数值参考表
 
 | 场景/设备类型 | 典型 $T_{sys}$ 范围 | 评价 |
-| :--- | :--- | :--- |
+| --- | --- | --- |
 | **深空通信（NASA DSN）** | **$10\text{ K} \sim 25\text{ K}$** | 极致。接收机通常使用液氦或深冷制冷。 |
 | **C 波段大型地面站** | **$60\text{ K} \sim 100\text{ K}$** | 优秀。地面站大锅配上高质量 LNA。 |
 | **Ku 波段家用小锅 (LNB)** | **$100\text{ K} \sim 200\text{ K}$** | 标准。$NF$ 在 $0.7\text{ dB} \sim 1.2\text{ dB}$ 之间。 |

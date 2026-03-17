@@ -6,6 +6,7 @@ export const zh = {
     convert: '转换',
     theme: { light: '浅色模式', dark: '暗色模式' },
     language: { switch: '切换语言', zh: '中文', en: 'English' },
+    formulaExplanation: '功能与术语解释',
   },
   home: {
     title: '链路参数计算器',
@@ -117,6 +118,7 @@ export const en = {
     convert: 'Convert',
     theme: { light: 'Light Mode', dark: 'Dark Mode' },
     language: { switch: 'Switch Language', zh: '中文', en: 'English' },
+    formulaExplanation: 'Function & Terminology Explanation',
   },
   home: {
     title: 'Link Parameter Calculator',

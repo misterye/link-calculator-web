@@ -11,6 +11,7 @@ import EbN0Converter from './pages/EbN0Converter'
 import NoiseFigure from './pages/NoiseFigure'
 import AntennaCalc from './pages/AntennaCalc'
 import EirpGT from './pages/EirpGT'
+import FormulaExplanation from './pages/FormulaExplanation'
 import { useI18n } from './contexts/I18nContext'
 
 function AppLayout() {
@@ -69,6 +70,7 @@ function AppLayout() {
                 <Route path="/noise-figure" element={<NoiseFigure />} />
                 <Route path="/antenna" element={<AntennaCalc />} />
                 <Route path="/eirp-gt" element={<EirpGT />} />
+                <Route path="/:type/formula" element={<FormulaExplanation />} />
               </Routes>
             </motion.div>
           </AnimatePresence>

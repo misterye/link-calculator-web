@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import GlassCard from '../components/GlassCard'
 import LiveNumber from '../components/LiveNumber'
 import calculator from '../utils/calculator'
@@ -6,6 +7,7 @@ import { useI18n } from '../contexts/I18nContext'
 
 export default function AntennaCalc() {
   const { t } = useI18n()
+  const navigate = useNavigate()
 
   const [diameter, setDiameter] = useState('')
   const [frequency, setFrequency] = useState('')
@@ -82,6 +84,19 @@ export default function AntennaCalc() {
           </div>
         </GlassCard>
       )}
+
+      {/* Formula Explanation Card */}
+      <GlassCard delay={0.2}>
+        <div 
+          className="flex flex-row items-center justify-between cursor-pointer"
+          onClick={() => navigate('/antenna/formula')}
+        >
+          <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+            {t('common.formulaExplanation')}
+          </span>
+          <span style={{ color: 'var(--text-muted)' }}>→</span>
+        </div>
+      </GlassCard>
     </div>
   )
 }
