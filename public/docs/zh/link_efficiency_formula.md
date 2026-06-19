@@ -40,8 +40,10 @@ SR = \frac{R_b}{m \times r \times \eta_{oh}}
 
 \[
 \begin{aligned}
-m \times r \times \eta_{oh} &= 2 \times \frac{3}{4} \times \frac{188}{204} = \frac{3}{2} \times \frac{47}{51} = \frac{141}{102} = \frac{47}{34} \\[2em]
-SR &= \frac{1000}{\frac{47}{34}} = 1000 \times \frac{34}{47} = \frac{34000}{47} = 723 + \frac{19}{47} \approx 723.404255 \, \text{ksps}
+&m \times r \times \eta_{oh} = 2 \times \frac{3}{4} \times \frac{188}{204} = \frac{3}{2} \times \frac{47}{51} \\
+&\quad = \frac{141}{102} = \frac{47}{34} \\[2em]
+&SR = \frac{1000}{\frac{47}{34}} = 1000 \times \frac{34}{47} = \frac{34000}{47} \\
+&\quad = 723 + \frac{19}{47} \approx 723.404255 \, \text{ksps}
 \end{aligned}
 \]
 
@@ -194,11 +196,11 @@ R_b = 1000 \times 2 \times \frac{3}{4} \times \frac{188}{204}
 
 \[
 \begin{aligned}
-2 \times \frac{3}{4} &= 1.5 \\[1.5em]
-1.5 \times \frac{188}{204} &= 1.5 \times \frac{47}{51} = \frac{3}{2} \times \frac{47}{51} = \frac{141}{102} \\
-&= \frac{47}{34} \approx 1.382352941176 \\[1.5em]
-R_b &= 1000 \times 1.382352941176 \\
-&= 1382.352941176 \, \text{kbps}
+&2 \times \frac{3}{4} = 1.5 \\[1.5em]
+&1.5 \times \frac{188}{204} = 1.5 \times \frac{47}{51} = \frac{3}{2} \times \frac{47}{51} = \frac{141}{102} \\
+&\quad = \frac{47}{34} \approx 1.382352941176 \\[1.5em]
+&R_b = 1000 \times 1.382352941176 \\
+&\quad = 1382.352941176 \, \text{kbps}
 \end{aligned}
 \]
 
