@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Activity, Zap, ArrowLeftRight, Thermometer, Satellite, Radio } from 'lucide-react'
+import { Activity, Zap, ArrowLeftRight, Thermometer, Satellite, Radio, Shield } from 'lucide-react'
 import GlassCard from '../components/GlassCard'
 import { useI18n } from '../contexts/I18nContext'
 
@@ -11,6 +11,7 @@ const features = [
   { key: 'noiseFigure', icon: Thermometer, path: '/noise-figure' },
   { key: 'antenna', icon: Satellite, path: '/antenna' },
   { key: 'eirpGT', icon: Radio, path: '/eirp-gt' },
+  { key: 'disclaimer', icon: Shield, path: '/disclaimer' },
 ]
 
 export default function Home() {

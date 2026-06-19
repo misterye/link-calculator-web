@@ -13,6 +13,7 @@ import NoiseFigure from './pages/NoiseFigure'
 import AntennaCalc from './pages/AntennaCalc'
 import EirpGT from './pages/EirpGT'
 import FormulaExplanation from './pages/FormulaExplanation'
+import Disclaimer from './pages/Disclaimer'
 import { useI18n } from './contexts/I18nContext'
 import { App as CapacitorApp } from '@capacitor/app'
 
@@ -109,6 +110,7 @@ function AppLayout() {
                 <Route path="/noise-figure" element={<NoiseFigure />} />
                 <Route path="/antenna" element={<AntennaCalc />} />
                 <Route path="/eirp-gt" element={<EirpGT />} />
+                <Route path="/disclaimer" element={<Disclaimer />} />
                 <Route path="/:type/formula" element={<FormulaExplanation />} />
               </Routes>
             </motion.div>

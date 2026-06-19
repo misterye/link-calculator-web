@@ -23,6 +23,11 @@ export const zh = {
     antennaDesc: '根据口径与频率估算增益及 3dB 波束宽度',
     eirpGT: 'EIRP 与 G/T',
     eirpGTDesc: '发射 EIRP 和接收系统品质因数 G/T 计算',
+    disclaimer: '免责声明',
+    disclaimerDesc: '关于计算结果、版权及相关法律责任的免责条款',
+  },
+  disclaimer: {
+    title: '免责声明',
   },
   link: {
     title: '链路效率计算',
@@ -135,6 +140,11 @@ export const en = {
     antennaDesc: 'Estimate gain and 3dB beamwidth from dish size & frequency',
     eirpGT: 'EIRP & G/T',
     eirpGTDesc: 'Calculate transmit EIRP and receive system figure of merit',
+    disclaimer: 'Disclaimer',
+    disclaimerDesc: 'Terms of disclaimer regarding calculation results, copyrights, and liabilities',
+  },
+  disclaimer: {
+    title: 'Disclaimer',
   },
   link: {
     title: 'Link Efficiency Calculator',
