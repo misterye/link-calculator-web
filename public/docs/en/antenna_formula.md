@@ -1,7 +1,7 @@
 ### 1. Core Terminology Explanation
 - **Dish Diameter D**: Physical aperture diameter of the parabolic reflector (unit: m).
 - **Frequency f**: Electromagnetic wave frequency (unit: GHz). E.g., 12 GHz for Ku-band.
-- **Aperture Efficiency η**: Ratio of effective area to physical area (0~1). Typical parabolic dish is 0.55~0.70.
+- **Aperture Efficiency η**: Ratio of effective area to physical area (0\~1). Typical parabolic dish is 0.55\~0.70.
 - **Antenna Gain (dBi)**: How much stronger the antenna is in the maximum radiation direction compared to an **isotropic radiator** (0 dBi).
 - **3dB Beamwidth (HPBW)**: Angular width where the main lobe power drops to half (-3 dB) of the maximum (unit: °). Smaller means a narrower, more focused beam.
 
