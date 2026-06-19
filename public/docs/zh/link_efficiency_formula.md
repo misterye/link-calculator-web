@@ -39,11 +39,10 @@ SR = \frac{R_b}{m \times r \times \eta_{oh}}
 **精确计算**（分数形式，避免浮点误差）：
 
 \[
-m \times r \times \eta_{oh} = 2 \times \frac{3}{4} \times \frac{188}{204} = \frac{3}{2} \times \frac{47}{51} = \frac{141}{102} = \frac{47}{34}
-\]
-
-\[
-SR = \frac{1000}{\frac{47}{34}} = 1000 \times \frac{34}{47} = \frac{34000}{47} = 723 + \frac{19}{47} \approx 723.404255 \, \text{ksps}
+\begin{aligned}
+m \times r \times \eta_{oh} &= 2 \times \frac{3}{4} \times \frac{188}{204} = \frac{3}{2} \times \frac{47}{51} = \frac{141}{102} = \frac{47}{34} \\[2em]
+SR &= \frac{1000}{\frac{47}{34}} = 1000 \times \frac{34}{47} = \frac{34000}{47} = 723 + \frac{19}{47} \approx 723.404255 \, \text{ksps}
+\end{aligned}
 \]
 
 #### 占用带宽公式（Nyquist 带宽 + 滚降）
@@ -55,17 +54,20 @@ B = SR \times (1 + \alpha)
 代入：
 
 \[
-B = 723.404255 \times 1.05 = 723.404255 \times \frac{21}{20} \approx 759.574468 \, \text{kHz}
+\begin{aligned}
+B &= 723.404255 \times 1.05 = 723.404255 \times \frac{21}{20} \\
+&\approx 759.574468 \, \text{kHz}
+\end{aligned}
 \]
 
 #### 频谱效率公式
 
 \[
-\eta_s = \frac{R_b}{B} = \frac{m \times r \times \eta_{oh}}{1 + \alpha}
-\]
-
-\[
-\eta_s = \frac{47/34}{1.05} = \frac{47}{34} \times \frac{20}{21} \approx 1.3165266 \, \text{bits/s/Hz}
+\begin{aligned}
+\eta_s &= \frac{R_b}{B} = \frac{m \times r \times \eta_{oh}}{1 + \alpha} \\[2em]
+\eta_s &= \frac{47/34}{1.05} = \frac{47}{34} \times \frac{20}{21} \\
+&\approx 1.3165266 \, \text{bits/s/Hz}
+\end{aligned}
 \]
 
 ### 3. 原理解释（DVB-S 物理层工作原理）
@@ -113,13 +115,19 @@ R_b = SR \times m \times r \times \eta_{oh}
 **反推符号速率**：
 
 \[
-SR = \frac{R_b}{m \times r \times \eta_{oh}} = \frac{1000}{2 \times \frac{3}{4} \times 1.0} = \frac{1000}{1.5} = \frac{2000}{3} \approx 666.6666667 \, \text{ksps}
+\begin{aligned}
+SR &= \frac{R_b}{m \times r \times \eta_{oh}} = \frac{1000}{2 \times \frac{3}{4} \times 1.0} = \frac{1000}{1.5} \\
+&= \frac{2000}{3} \approx 666.6666667 \, \text{ksps}
+\end{aligned}
 \]
 
 #### 占用带宽（仍使用升余弦滚降）
 
 \[
-B = SR \times (1 + \alpha) = \frac{2000}{3} \times 1.05 = \frac{2000}{3} \times \frac{21}{20} = \frac{2000 \times 21}{3 \times 20} = \frac{42000}{60} = 700 \, \text{kHz}
+\begin{aligned}
+B &= SR \times (1 + \alpha) = \frac{2000}{3} \times 1.05 = \frac{2000}{3} \times \frac{21}{20} \\
+&= \frac{2000 \times 21}{3 \times 20} = \frac{42000}{60} = 700 \, \text{kHz}
+\end{aligned}
 \]
 
 #### 频谱效率
@@ -185,15 +193,13 @@ R_b = 1000 \times 2 \times \frac{3}{4} \times \frac{188}{204}
 先算中间值：
 
 \[
-2 \times \frac{3}{4} = 1.5
-\]
-
-\[
-1.5 \times \frac{188}{204} = 1.5 \times \frac{47}{51} = \frac{3}{2} \times \frac{47}{51} = \frac{141}{102} = \frac{47}{34} \approx 1.382352941176
-\]
-
-\[
-R_b = 1000 \times 1.382352941176 = 1382.352941176 \, \text{kbps}
+\begin{aligned}
+2 \times \frac{3}{4} &= 1.5 \\[1.5em]
+1.5 \times \frac{188}{204} &= 1.5 \times \frac{47}{51} = \frac{3}{2} \times \frac{47}{51} = \frac{141}{102} \\
+&= \frac{47}{34} \approx 1.382352941176 \\[1.5em]
+R_b &= 1000 \times 1.382352941176 \\
+&= 1382.352941176 \, \text{kbps}
+\end{aligned}
 \]
 
 #### 带宽
@@ -211,7 +217,10 @@ B = SR \times (1 + \alpha) = 1000 \times 1.05 = 1050 \, \text{kHz}
 或者直接用参数表达（与前两个例子一致）：
 
 \[
-\eta_s = \frac{m \times r \times \eta_{oh}}{1 + \alpha} = \frac{2 \times 0.75 \times \frac{188}{204}}{1.05} = \frac{1.382352941176}{1.05} \approx 1.3165
+\begin{aligned}
+\eta_s &= \frac{2 \times 0.75 \times \frac{188}{204}}{1.05} \\
+&= \frac{1.382352941176}{1.05} \approx 1.3165
+\end{aligned}
 \]
 
 ### 3. 三种模式结果完整对比（同一 MODCOD + α=0.05）
@@ -280,7 +289,10 @@ B = SR \times (1 + \alpha) = 1000 \times 1.05 = 1050 \, \text{kHz}
 #### 频谱效率
 
 \[
-\eta_s = \frac{R_b}{B} = \frac{1500}{1050} = \frac{1500 \div 150}{1050 \div 150} = \frac{10}{7} \approx 1.42857142857 \, \text{bits/s/Hz}
+\begin{aligned}
+\eta_s &= \frac{R_b}{B} = \frac{1500}{1050} = \frac{1500 \div 150}{1050 \div 150} \\
+&= \frac{10}{7} \approx 1.42857142857 \, \text{bits/s/Hz}
+\end{aligned}
 \]
 
 或者参数直接计算：
