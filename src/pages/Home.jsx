@@ -28,17 +28,11 @@ export default function Home() {
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
         <h1
-          className="text-3xl sm:text-4xl font-bold tracking-tight mb-2"
+          className="text-3xl sm:text-4xl font-bold tracking-tight"
           style={{ color: 'var(--text-primary)' }}
         >
           {t('home.title')}
         </h1>
-        <p
-          className="text-sm sm:text-base"
-          style={{ color: 'var(--text-muted)' }}
-        >
-          {t('home.subtitle')}
-        </p>
       </motion.div>
 
       {/* ─── Feature cards ─── */}
