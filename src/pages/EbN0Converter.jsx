@@ -1,10 +1,11 @@
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlassCard from '../components/GlassCard'
 import SegmentedControl from '../components/SegmentedControl'
 import LiveNumber from '../components/LiveNumber'
 import calculator from '../utils/calculator'
 import { useI18n } from '../contexts/I18nContext'
+import usePersistedState from '../hooks/usePersistedState'
 
 const RATE_UNITS = [
   { value: 1, label: 'bps / Hz' },
@@ -16,12 +17,12 @@ export default function EbN0Converter() {
   const { t } = useI18n()
   const navigate = useNavigate()
 
-  const [mode, setMode] = useState('ebToC')
-  const [inputVal, setInputVal] = useState('')
-  const [rb, setRb] = useState('')
-  const [bn, setBn] = useState('')
-  const [rbScale, setRbScale] = useState('1000') // kbps default
-  const [bnScale, setBnScale] = useState('1000') // kHz default
+  const [mode, setMode] = usePersistedState('link_calc_ebn0_mode', 'ebToC')
+  const [inputVal, setInputVal] = usePersistedState('link_calc_ebn0_inputVal', '')
+  const [rb, setRb] = usePersistedState('link_calc_ebn0_rb', '')
+  const [bn, setBn] = usePersistedState('link_calc_ebn0_bn', '')
+  const [rbScale, setRbScale] = usePersistedState('link_calc_ebn0_rbScale', '1000')
+  const [bnScale, setBnScale] = usePersistedState('link_calc_ebn0_bnScale', '1000')
 
   const numInput = parseFloat(inputVal) || 0
   const numRb = (parseFloat(rb) || 0) * parseFloat(rbScale)

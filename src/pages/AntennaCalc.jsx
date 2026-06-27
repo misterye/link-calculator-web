@@ -1,18 +1,19 @@
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlassCard from '../components/GlassCard'
 import LiveNumber from '../components/LiveNumber'
 import calculator from '../utils/calculator'
 import { useI18n } from '../contexts/I18nContext'
+import usePersistedState from '../hooks/usePersistedState'
 
 export default function AntennaCalc() {
   const { t } = useI18n()
   const navigate = useNavigate()
 
-  const [diameter, setDiameter] = useState('')
-  const [frequency, setFrequency] = useState('')
-  const [freqUnit, setFreqUnit] = useState('1e9') // GHz
-  const [efficiency, setEfficiency] = useState('0.6')
+  const [diameter, setDiameter] = usePersistedState('link_calc_antenna_diameter', '')
+  const [frequency, setFrequency] = usePersistedState('link_calc_antenna_frequency', '')
+  const [freqUnit, setFreqUnit] = usePersistedState('link_calc_antenna_freqUnit', '1e9')
+  const [efficiency, setEfficiency] = usePersistedState('link_calc_antenna_efficiency', '0.6')
 
   const numD = parseFloat(diameter) || 0
   const numF = (parseFloat(frequency) || 0) * parseFloat(freqUnit)

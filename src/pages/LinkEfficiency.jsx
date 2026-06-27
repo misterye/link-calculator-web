@@ -1,10 +1,11 @@
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlassCard from '../components/GlassCard'
 import SegmentedControl from '../components/SegmentedControl'
 import LiveNumber from '../components/LiveNumber'
 import calculator from '../utils/calculator'
 import { useI18n } from '../contexts/I18nContext'
+import usePersistedState from '../hooks/usePersistedState'
 
 const ROLL_OFF_OPTIONS = [...calculator.ROLL_OFF_PRESETS.map(String), 'custom']
 
@@ -13,15 +14,15 @@ export default function LinkEfficiency() {
   const navigate = useNavigate()
 
   // ─── State ───
-  const [linkType, setLinkType] = useState('downlink')
-  const [calcMode, setCalcMode] = useState('dataToSymbol')
-  const [selectedModcod, setSelectedModcod] = useState('')
-  const [rollOff, setRollOff] = useState('0.05')
-  const [customRollOff, setCustomRollOff] = useState('')
-  const [overhead, setOverhead] = useState('1')
-  const [inputValue, setInputValue] = useState('')
-  const [dataRateUnit, setDataRateUnit] = useState('kbps')
-  const [symbolRateUnit, setSymbolRateUnit] = useState('ksps')
+  const [linkType, setLinkType] = usePersistedState('link_calc_efficiency_linkType', 'downlink')
+  const [calcMode, setCalcMode] = usePersistedState('link_calc_efficiency_calcMode', 'dataToSymbol')
+  const [selectedModcod, setSelectedModcod] = usePersistedState('link_calc_efficiency_selectedModcod', '')
+  const [rollOff, setRollOff] = usePersistedState('link_calc_efficiency_rollOff', '0.05')
+  const [customRollOff, setCustomRollOff] = usePersistedState('link_calc_efficiency_customRollOff', '')
+  const [overhead, setOverhead] = usePersistedState('link_calc_efficiency_overhead', '1')
+  const [inputValue, setInputValue] = usePersistedState('link_calc_efficiency_inputValue', '')
+  const [dataRateUnit, setDataRateUnit] = usePersistedState('link_calc_efficiency_dataRateUnit', 'kbps')
+  const [symbolRateUnit, setSymbolRateUnit] = usePersistedState('link_calc_efficiency_symbolRateUnit', 'ksps')
 
   // ─── Derived ───
   const modcods = linkType === 'downlink' ? calculator.DOWNLINK_MODCODS : calculator.UPLINK_MODCODS

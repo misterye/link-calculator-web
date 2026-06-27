@@ -1,25 +1,26 @@
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlassCard from '../components/GlassCard'
 import SegmentedControl from '../components/SegmentedControl'
 import LiveNumber from '../components/LiveNumber'
 import calculator from '../utils/calculator'
 import { useI18n } from '../contexts/I18nContext'
+import usePersistedState from '../hooks/usePersistedState'
 
 export default function EirpGT() {
   const { t } = useI18n()
   const navigate = useNavigate()
 
-  const [section, setSection] = useState('eirp')
+  const [section, setSection] = usePersistedState('link_calc_eirpgt_section', 'eirp')
 
   // EIRP inputs
-  const [ptx, setPtx] = useState('')
-  const [gtx, setGtx] = useState('')
-  const [ltx, setLtx] = useState('')
+  const [ptx, setPtx] = usePersistedState('link_calc_eirpgt_ptx', '')
+  const [gtx, setGtx] = usePersistedState('link_calc_eirpgt_gtx', '')
+  const [ltx, setLtx] = usePersistedState('link_calc_eirpgt_ltx', '')
 
   // G/T inputs
-  const [grx, setGrx] = useState('')
-  const [tsys, setTsys] = useState('')
+  const [grx, setGrx] = usePersistedState('link_calc_eirpgt_grx', '')
+  const [tsys, setTsys] = usePersistedState('link_calc_eirpgt_tsys', '')
 
   const eirpResult = useMemo(() => {
     const p = parseFloat(ptx)

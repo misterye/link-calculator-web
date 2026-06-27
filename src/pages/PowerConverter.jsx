@@ -1,10 +1,11 @@
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlassCard from '../components/GlassCard'
 import SegmentedControl from '../components/SegmentedControl'
 import LiveNumber from '../components/LiveNumber'
 import calculator from '../utils/calculator'
 import { useI18n } from '../contexts/I18nContext'
+import usePersistedState from '../hooks/usePersistedState'
 
 const POWER_UNITS = ['W', 'dBm', 'dBW']
 
@@ -12,8 +13,8 @@ export default function PowerConverter() {
   const { t } = useI18n()
   const navigate = useNavigate()
 
-  const [inputUnit, setInputUnit] = useState('W')
-  const [inputValue, setInputValue] = useState('')
+  const [inputUnit, setInputUnit] = usePersistedState('link_calc_power_inputUnit', 'W')
+  const [inputValue, setInputValue] = usePersistedState('link_calc_power_inputValue', '')
 
   const numericInput = parseFloat(inputValue)
   const hasInput = inputValue !== '' && isFinite(numericInput)

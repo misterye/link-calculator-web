@@ -1,17 +1,18 @@
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlassCard from '../components/GlassCard'
 import SegmentedControl from '../components/SegmentedControl'
 import LiveNumber from '../components/LiveNumber'
 import calculator from '../utils/calculator'
 import { useI18n } from '../contexts/I18nContext'
+import usePersistedState from '../hooks/usePersistedState'
 
 export default function NoiseFigure() {
   const { t } = useI18n()
   const navigate = useNavigate()
 
-  const [mode, setMode] = useState('nfToTe')
-  const [inputVal, setInputVal] = useState('')
+  const [mode, setMode] = usePersistedState('link_calc_noise_mode', 'nfToTe')
+  const [inputVal, setInputVal] = usePersistedState('link_calc_noise_inputVal', '')
 
   const numInput = parseFloat(inputVal)
   const valid = inputVal !== '' && isFinite(numInput) && (mode === 'nfToTe' ? true : numInput >= 0)
